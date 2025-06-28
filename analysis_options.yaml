@@ -1,1 +1,12 @@
 include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  errors:
+    # Treat these as errors (severe)
+    unused_import: error
+    deprecated_member_use: error
+    # Ignore these (low-severity)
+    unused_element: ignore
+    unused_local_variable: ignore
+    unnecessary_import: ignore
+    # Add other rules to ignore as needed
