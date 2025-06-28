@@ -622,9 +622,9 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
   Widget _buildDivider() {
     return Row(
       children: [
-        Expanded(child: Divider(color: Colors.grey.shade700.withOpacity(0.5))),
+        Expanded(child: Divider(color: Colors.grey.shade700.withValues(opacity: 0.5))),
         Padding(padding: const EdgeInsets.symmetric(horizontal: 16), child: Text('o continua con correo', style: TextStyle(color: Colors.grey.shade400, fontSize: 14,),),),
-        Expanded(child: Divider(color: Colors.grey.shade700.withOpacity(0.5))),
+        Expanded(child: Divider(color: Colors.grey.shade700.withValues(opacity: 0.5))),
       ],
     );
   }
@@ -632,7 +632,7 @@ class _LoginScreenState extends State<LoginScreen> with TickerProviderStateMixin
   Widget _buildInfoCard() {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(gradient: LinearGradient(colors: [const Colors.grey.shade700.withOpacity(0.5), const Colors.grey.shade700.withOpacity(0.5),],), borderRadius: BorderRadius.circular(12), border: Border.all(color: const Colors.grey.shade700.withOpacity(0.5),),),
+      decoration: BoxDecoration(gradient: LinearGradient(colors: [const Color(0xFF3B82F6).withValues(opacity: 0.5), const Color(0xFF1D4ED8).withValues(opacity: 0.5),],), borderRadius: BorderRadius.circular(12), border: Border.all(color: const Color(0xFF3B82F6).withValues(opacity: 0.5),),),
       child: Row(
         children: [
           const Icon(Icons.info_outline, color: Color(0xFF3B82F6), size: 20,), const SizedBox(width: 12),

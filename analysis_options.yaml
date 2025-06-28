@@ -5,6 +5,7 @@ analyzer:
     # Severe issues
     undefined_named_parameter: error
     undefined_class: error
+    
     uri_does_not_exist: error
     creation_with_non_type: error
     expected_token: error
