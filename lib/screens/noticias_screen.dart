@@ -142,7 +142,7 @@ class _NoticiasScreenState extends State<NoticiasScreen> {
                         ),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                          decoration: BoxDecoration(color: Colors.indigo.withOpacity(0.1), borderRadius: const BorderRadius.only(topLeft: Radius.circular(12))),
+                          decoration: BoxDecoration(color: Colors.indigo.withValues(opacity: 0.5), borderRadius: const BorderRadius.only(topLeft: Radius.circular(12))),
                           child: Chip(label: Text(noticia.tipo, style: const TextStyle(fontWeight: FontWeight.bold)), backgroundColor: Colors.transparent, elevation: 0, visualDensity: VisualDensity.compact, padding: EdgeInsets.zero),
                         ),
                       ],

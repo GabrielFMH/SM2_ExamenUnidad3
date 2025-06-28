@@ -218,7 +218,7 @@ class _ScreenRutaSeguraState extends State<ScreenRutaSegura> with SingleTickerPr
   }
 
   Future<BitmapDescriptor> _bitmapDescriptorFromIconData(IconData iconData, Color color, {double size = 64.0, bool isOriginMarker = false}) async {
-    final String cacheKey = '${iconData.codePoint}_${color.value}_${size}_$isOriginMarker';
+    final String cacheKey = '${iconData.codePoint}_${color.toARGB32}_${size}_$isOriginMarker';
     if (_iconBitmapCache.containsKey(cacheKey)) return _iconBitmapCache[cacheKey]!;
     
     final ui.PictureRecorder pictureRecorder = ui.PictureRecorder();
@@ -616,7 +616,7 @@ class _ScreenRutaSeguraState extends State<ScreenRutaSegura> with SingleTickerPr
     String url = 'https://maps.googleapis.com/maps/api/directions/json?origin=${origin.latitude},${origin.longitude}&destination=${destination.latitude},${destination.longitude}&mode=driving&language=es&key=$googleMapsApiKey';
     if (detourWaypoints.isNotEmpty) {
       url += '&waypoints=${detourWaypoints.map((p) => "via:${p.latitude},${p.longitude}").join('|')}';
-    } else if (routeType == RouteType.safe && fetchAlternativesForSafeRoute) url += '&alternatives=true';
+    } else if {(routeType == RouteType.safe && fetchAlternativesForSafeRoute)} url += '&alternatives=true';
 
     try {
       final response = await http.get(Uri.parse(url));
@@ -1062,14 +1062,14 @@ class _ScreenRutaSeguraState extends State<ScreenRutaSegura> with SingleTickerPr
         onVerticalDragUpdate: (details) { 
           if (details.primaryDelta! > 0 && _isPanelExpanded) {
             _toggleReportPanelExpansion();
-          } else if (details.primaryDelta! < 0 && !_isPanelExpanded) _toggleReportPanelExpansion();
+          } else if {(details.primaryDelta! < 0 && !_isPanelExpanded)} _toggleReportPanelExpansion();
         },
         child: AnimatedBuilder(
           animation: _panelAnimation!,
           builder: (context, child) {
             return Container(
               height: _panelAnimation!.value,
-              decoration: BoxDecoration(color: Colors.white, borderRadius: const BorderRadius.vertical(top: Radius.circular(16)), boxShadow: [ BoxShadow(color: Colors.black.withOpacity(0.2), blurRadius: 10, offset: const Offset(0, -2)) ]),
+              decoration: BoxDecoration(color: Colors.white, borderRadius: const BorderRadius.vertical(top: Radius.circular(16)), boxShadow: [ BoxShadow(color: Colors.black.withValues(opacity: 0.5), blurRadius: 10, offset: const Offset(0, -2)) ]),
               child: SingleChildScrollView(
                 physics: _isPanelExpanded ? const AlwaysScrollableScrollPhysics() : const NeverScrollableScrollPhysics(),
                 child: Padding(
@@ -1145,7 +1145,7 @@ class _ScreenRutaSeguraState extends State<ScreenRutaSegura> with SingleTickerPr
                       onTap: () => _showFullScreenImage(context, imageUrl),
                       child: Container(
                         width: 180,
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), border: Border.all(color: Colors.grey.shade300), boxShadow: [ BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 5, offset: const Offset(0, 2)) ]),
+                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(12), border: Border.all(color: Colors.grey.shade300), boxShadow: [ BoxShadow(color: Colors.black.withValues(opacity: 0.5), blurRadius: 5, offset: const Offset(0, 2)) ]),
                         child: Stack(
                           fit: StackFit.expand,
                           children: [
@@ -1156,7 +1156,7 @@ class _ScreenRutaSeguraState extends State<ScreenRutaSegura> with SingleTickerPr
                             Positioned(bottom: 0, left: 0, right: 0,
                               child: Container(
                                 padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                                decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.bottomCenter, end: Alignment.topCenter, colors: [Colors.black.withOpacity(0.7), Colors.transparent])),
+                                decoration: BoxDecoration(gradient: LinearGradient(begin: Alignment.bottomCenter, end: Alignment.topCenter, colors: [Colors.black.withValues(opacity: 0.5), Colors.transparent])),
                                 child: const Row(mainAxisSize: MainAxisSize.min, children: [ Icon(Icons.zoom_in, color: Colors.white, size: 16), SizedBox(width: 4), Text('Ampliar', style: TextStyle(color: Colors.white, fontSize: 12))]),
                               ),
                             ),
@@ -1189,7 +1189,7 @@ class _ScreenRutaSeguraState extends State<ScreenRutaSegura> with SingleTickerPr
                 errorBuilder: (ctx, err, st) => Container(color: Colors.grey[200], child: Center(child: Icon(Icons.broken_image, size: 50, color: Colors.grey[400]))),
               ),
             ),
-            Positioned(top: 20, right: 20, child: CircleAvatar(backgroundColor: Colors.black.withOpacity(0.5), child: IconButton(icon: const Icon(Icons.close, color: Colors.white), onPressed: () => Navigator.of(context).pop()))),
+            Positioned(top: 20, right: 20, child: CircleAvatar(backgroundColor: Colors.black.withValues(opacity: 0.5), child: IconButton(icon: const Icon(Icons.close, color: Colors.white), onPressed: () => Navigator.of(context).pop()))),
           ],
         ),
       ),

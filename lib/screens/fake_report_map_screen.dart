@@ -13,7 +13,7 @@ class FakeReportMapScreen extends StatefulWidget {
 }
 
 class _FakeReportMapScreenState extends State<FakeReportMapScreen> {
-  GoogleMapController? _mapController;
+  
   int _reportCounter = 1;
   bool _isSubmitting = false;
   Set<Marker> _markers = {};
@@ -312,7 +312,7 @@ class _FakeReportMapScreenState extends State<FakeReportMapScreen> {
                 borderRadius: BorderRadius.circular(12),
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.1),
+                    color: Colors.black.withValues(opacity: 0.5),
                     blurRadius: 8,
                     offset: const Offset(0, 2),
                   ),

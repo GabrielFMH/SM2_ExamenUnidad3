@@ -226,13 +226,13 @@ class _AlertSettingsScreenState extends State<AlertSettingsScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(children: [Container(padding: const EdgeInsets.all(8), decoration: BoxDecoration(color: _sensibilidadColors[_sensibilidad]!.withOpacity(0.1), borderRadius: BorderRadius.circular(8),), child: Icon(_sensibilidadIcons[_sensibilidad], color: _sensibilidadColors[_sensibilidad], size: 24,),), const SizedBox(width: 16), const Text('Sensibilidad de Alertas', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,),),],),
+                    Row(children: [Container(padding: const EdgeInsets.all(8), decoration: BoxDecoration(color: _sensibilidadColors[_sensibilidad]!.color.toARGB32, borderRadius: BorderRadius.circular(8),), child: Icon(_sensibilidadIcons[_sensibilidad], color: _sensibilidadColors[_sensibilidad], size: 24,),), const SizedBox(width: 16), const Text('Sensibilidad de Alertas', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold,),),],),
                     const SizedBox(height: 20),
                     ...(_sensibilidadOptions.map((option) {
                       bool isSelected = option == _sensibilidad;
                       return Container(
                         margin: const EdgeInsets.only(bottom: 8),
-                        decoration: BoxDecoration(color: isSelected ? _sensibilidadColors[option]!.withOpacity(0.1) : null, borderRadius: BorderRadius.circular(12), border: Border.all(color: isSelected ? _sensibilidadColors[option]! : Colors.grey.shade300, width: isSelected ? 2 : 1,),),
+                        decoration: BoxDecoration(color: isSelected ? _sensibilidadColors[option]!.withValues(opacity: 0.5): null, borderRadius: BorderRadius.circular(12), border: Border.all(color: isSelected ? _sensibilidadColors[option]! : Colors.grey.shade300, width: isSelected ? 2 : 1,),),
                         child: RadioListTile<String>(title: Row(children: [Icon(_sensibilidadIcons[option], color: _sensibilidadColors[option], size: 20,), const SizedBox(width: 8), Text(option, style: TextStyle(fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,),),],), subtitle: Text(_sensibilidadDescriptions[option]!, style: TextStyle(color: Colors.grey[600], fontSize: 13,),), value: option, groupValue: _sensibilidad, activeColor: _sensibilidadColors[option], onChanged: (value) { if (_notificacionesActivas) setState(() => _sensibilidad = value!); },),
                       );
                     }).toList()),
@@ -243,7 +243,7 @@ class _AlertSettingsScreenState extends State<AlertSettingsScreen> {
             const SizedBox(height: 32),
             Container(
               width: double.infinity, height: 56,
-              decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.indigo[600]!, Colors.indigo[800]!],), borderRadius: BorderRadius.circular(16), boxShadow: [BoxShadow(color: Colors.indigo.withOpacity(0.3), blurRadius: 8, offset: const Offset(0, 4),),],),
+              decoration: BoxDecoration(gradient: LinearGradient(colors: [Colors.indigo[600]!, Colors.indigo[800]!],), borderRadius: BorderRadius.circular(16), boxShadow: [BoxShadow(color: Colors.indigo.withValues(opacity: 0.5), blurRadius: 8, offset: const Offset(0, 4),),],),
               child: ElevatedButton.icon(
                 onPressed: _isSaving ? null : _saveConfig,
                 icon: _isSaving ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(strokeWidth: 2, valueColor: AlwaysStoppedAnimation<Color>(Colors.white),),) : const Icon(Icons.save, color: Colors.white),
