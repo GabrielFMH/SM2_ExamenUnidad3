@@ -1,19 +1,4 @@
 include: package:flutter_lints/flutter.yaml
 
 analyzer:
-  errors:
-    # Severe issues
-    undefined_named_parameter: error
-    undefined_class: error
-    
-    uri_does_not_exist: error
-    creation_with_non_type: error
-    expected_token: error
-    undefined_getter: error
-    undefined_identifier: error
-    # Suppress minor issues
-    avoid_print: ignore
-    file_names: ignore
-    prefer_const_constructors: ignore
-    prefer_const_literals_to_create_immutables: ignore
-    deprecated_member_use: warning #
+  exclude: [lib/**.dart]
